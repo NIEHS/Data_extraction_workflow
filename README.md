@@ -1,45 +1,65 @@
-## Automating Data Extraction from Scientific Literature and General PDF Files Using Large Language Models and KNIME: An Application in Toxicology
-Thank you for your interest in this data extraction workflow! If you are interested in running the workflow locally, either to make edits or just see how it works, follow the directions below to install it on your computer.
+# MoVIZ Data Extraction Workflow
 
-### Installation
-#### Prerequisites - Python and packages
-Before you can use the workflow, you will need to install its dependencies with Anaconda.
-If you don't have it already, download [miniconda3](https://docs.anaconda.com/free/miniconda/).
-To install the dependencies:
-1. Download the environment.yml file: [environment.yml](https://hub.knime.com/s/oh8vLkMh-2h0th6B).
-2. Open the Anaconda/Miniconda terminal.
-3. Navigate to the folder containing environment.yml using `cd /path/to/environment.yml`.
-4. Run the following command: `conda env create -f environment.yml`. Press `y` to confirm the install if prompted.
-6. Wait for the packages to install (this may take a while).
+[![DOI](https://img.shields.io/badge/DOI-10.1002%2Fwcms.70047-blue)](https://doi.org/10.1002/wcms.70047)
 
-#### Prerequisites - GROBID
-- [GROBID Installation Guide](https://grobid.readthedocs.io/en/latest/Install-Grobid/)
-    - **Requires JAVA:**  
-      For building GROBID yourself, a JDK must be installed on your machine. We tested the tool successfully from JDK 1.11 up to JDK 1.17. Other recent JDK versions should work correctly.
-    - **Source Code Download:**  
-      - Download from GitHub: [grobid-0.8.0.zip](https://github.com/kermitt2/grobid/archive/0.8.0.zip)
-      - Unzip the folder `grobid-0.8.0`
-      - Place it in a folder without any spaces in the name
-    - **Building and Running GROBID:**
-      1. Navigate to the `grobid-0.8.0` folder:
-          - `cd grobid-0.8.0`
-      2. Run the build command:
-          - `./gradlew clean install`
-      3. Start the local server with the command:
-          - `./gradlew run`
-          - Check the server at: [http://localhost:8070/](http://localhost:8070/)
-      4. **Important:** Ensure the local server is started **before** executing the workflow.
-    - **Platform Note:**
-      - [Windows-related issues](https://grobid.readthedocs.io/en/latest/Troubleshooting/#windows-related-issues):  
-        Windows, unfortunately, is currently not supported, due to lack of experience and time constraints.
+[![Graphical abstract for Automating Data Extraction from Scientific Literature and General PDF Files Using Large Language Models and KNIME: An Application in Toxicology](assets/graphical_abstract.jpg)](https://doi.org/10.1002/wcms.70047)
 
-#### Running the workflow
-To set up the workflow on your computer:
-1. Download the workflow: [Data Extraction Workflow](https://hub.knime.com/s/uA68Gz0jfpcUt_X7).
-2. In KNIME Analytics Platform, select your **Local Space**.
-3. In your local space, select **Import Workflow**
-4. Browse to the workflow file you downloaded; it will have the **.knwf** extension.
-5. KNIME may prompt you to install extensions; follow the on-screen instructions to do so. You may need to restart KNIME when done.
-6. Once KNIME restarts, open File > Preferences. In the left panel, navigate to KNIME > Conda. Click Browse or enter the path to your Anaconda/Miniconda installation (On Windows, this will often be in your AppData or User folder).
-7. Exit Preferences and run the workflow with your data!
-  
+MoVIZ - Data Extraction is a KNIME workflow for extracting structured information from scientific
+literature and general PDF files with large language models (LLMs). It was
+developed for the publication [**Automating Data Extraction from Scientific
+Literature and General PDF Files Using Large Language Models and KNIME: An
+Application in Toxicology**](https://doi.org/10.1002/wcms.70047).
+
+## Latest Release
+
+The current release is **[version 1.1.0](https://github.com/Moreira-Filho/Data_extraction_workflow/releases/tag/v1.1.0)**.
+
+Version 1.1.0 introduces the MoVIZ - Data Extraction KNIME extension for easier
+installation, fixes API-call issues, and adds updated LLM options. The extension
+includes the Python dependencies required by its nodes, so a separate Conda
+environment is no longer required.
+
+### Quick Start
+
+1. Install [KNIME Analytics Platform](https://www.knime.com/downloads/) 5.12.0
+   or newer.
+2. Open the [illustrated installation guide](versions/v1.1.0/README.md).
+3. Download the workflow and extension using the links in the guide.
+4. Install the extension, import the workflow archive, and run the workflow.
+
+The installation guide is also available as a
+**[printable PDF](versions/v1.1.0/Installation-Guide-v1.1.0.pdf)**.
+
+## Versions
+
+| Version | Status | Installation | Release |
+| --- | --- | --- | --- |
+| 1.1.0 | Current | [Illustrated guide](versions/v1.1.0/README.md) | [Downloads and release notes](https://github.com/Moreira-Filho/Data_extraction_workflow/releases/tag/v1.1.0) |
+| 1.0.0 | Legacy | [Conda-based guide](versions/v1.0.0/README.md) | [Source snapshot](https://github.com/Moreira-Filho/Data_extraction_workflow/tree/v1.0.0) |
+
+## GROBID Support
+
+[GROBID](https://grobid.readthedocs.io/en/latest/Install-Grobid/) is required
+only for the scientific-literature mode. It is not required for the other
+workflow modes. GROBID is not officially supported on Windows; see the
+version-specific installation guide for details.
+
+## Large Files
+
+The KNIME archives and the version 1.1.0 extension package are managed with
+[Git LFS](https://git-lfs.com/). For normal installation, use the named links on
+the GitHub release page instead of GitHub's automatically generated **Source
+code** archives.
+
+To clone all files, including the LFS-managed extension archive:
+
+```sh
+git lfs install
+git clone https://github.com/Moreira-Filho/Data_extraction_workflow.git
+```
+
+## Repository Layout
+
+- `versions/v1.1.0/`: current workflow, extension, and illustrated guide
+- `versions/v1.0.0/`: legacy workflow, environment, and installation guide
+- Git tags `v1.0.0` and `v1.1.0`: immutable snapshots of the published versions
